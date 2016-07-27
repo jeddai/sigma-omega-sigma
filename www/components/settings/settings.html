@@ -1,0 +1,16 @@
+<ion-view class="energized-bg" title="Settings">
+  <ion-content>
+    <ion-list>
+      <ion-item class="energized item-border-bg" ng-click="sendPassResetEmail()" ng-disabled="passwordResetSent">
+        <i class="icon ion-paper-airplane energized"></i>
+        <span ng-show="!passwordResetSent">Send Password Reset Email</span>
+        <b ng-show="passwordResetSent">Sent!</b>
+      </ion-item>
+      <ion-item class="energized item-border-bg" ng-click="subscribeToMemberNotifications()">
+        <i class="icon ion-email-unread energized"></i>
+        <span ng-show="!subscribedToMemberNotifications">Subscribe to member notifications</span>
+        <span ng-show="subscribedToMemberNotifications" class="wrap">You are subscribed to member notifications</span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

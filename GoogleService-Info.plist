@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>898601276436-r8f0f9kao6dui96k7dvfmbi0kfejeqr0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.898601276436-r8f0f9kao6dui96k7dvfmbi0kfejeqr0</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBd4xROqvAw4FkX7rhVLvb5qrbZsE7pLxk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>898601276436</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.sigmaomegasigma.jeddai</string>
+	<key>PROJECT_ID</key>
+	<string>sigma-omega-sigma</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sigma-omega-sigma.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:898601276436:ios:b2660b71ad58a0d6</string>
+	<key>DATABASE_URL</key>
+	<string>https://sigma-omega-sigma.firebaseio.com</string>
+</dict>
+</plist>

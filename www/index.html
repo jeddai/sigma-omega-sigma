@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Thing</title>
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.0.4/firebase.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCoJNQeL1bNBshfKhWm44i7XvpfbUzVYmA",
+        authDomain: "sigma-omega-sigma.firebaseapp.com",
+        databaseURL: "https://sigma-omega-sigma.firebaseio.com",
+        storageBucket: "sigma-omega-sigma.appspot.com",
+      };
+      firebase.initializeApp(config);
+
+      var auth = firebase.auth();
+      var database = firebase.database();
+    </script>
+
+    <!-- your app's js -->
+    <script src="components/app.js"></script>
+    <script src="components/menu/app.controller.js"></script>
+    <script src="components/members/members.controller.js"></script>
+    <script src="components/about/about.controller.js"></script>
+    <script src="components/settings/settings.controller.js"></script>
+
+  </head>
+
+  <body ng-app="sigmaomegasigma">
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+/* Empty. Add your own CSS if you like */
+ion-content h1,
+ion-content h2,
+ion-content h3,
+ion-content p {
+  padding: 0px 5px 5px 5px;
+}
+
+i {
+  font-size: 1.2em;
+}
+
+.item.wrap, .item-content.wrap, span.wrap {
+  white-space: normal;
+}
+
+.energized-input {
+  background-color: transparent;
+  color: #e6b500;
+}
+
+ion-content a {
+  color: #e6b500;
+}
+
+ion-nav-bar button {
+  color: #e6b500;
+}
+
+.bar-dark {
+  background-color: #333 !important;
+}
+
+.checkbox-energized input:before,
+.checkbox-energized .checkbox-icon:before {
+  background: #555;
+  border-color: #333;
+}
+
+.item-border-bg {
+  background-color: #444 !important;
+  border-color: #333 !important;
+}
+
+.item-bg {
+  background-color: #444;
+  border-color: #444;
+}
+
+.item-complex .item-content {
+  color: #e6b500;
+  background-color: #444;
+  border-color: #333;
+}
+
+.energized {
+  color: #e6b500 !important;
+}
+
+.energized-bg,
+ion-radio {
+  color: #e6b500 !important;
+  background-color: #444 !important;
+  border-color: #333 !important;
+}
+
+.title.header-item {
+  color: #e6b500 !important;
+}
+
+.bar .bar-dark .title {
+  color: #e6b500;
+  background-color: #444;
+}

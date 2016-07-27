@@ -1,0 +1,21 @@
+<ion-view class="energized-bg" view-title="Members">
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear ion-more energized" ng-click="openChooseView()"></button>
+  </ion-nav-buttons>
+  <ion-content>
+    <!--<h1 class="energized">Members</h1>-->
+    <ion-list class="energized" can-swipe="listCanSwipe">
+      <ion-item ng-show="memberTypes[member.status].show" ng-repeat="member in members | orderBy:'first_name'" class="item-thumbnail-left item-avatar energized item-border-bg">
+        <img ng-show="member.image" ng-src="{{member.image}}">
+        <h2 class="energized">{{member.first_name}} {{member.last_name}} <i class="icon ion-information-circled energized" ng-show="loggedIn" ng-click="openInfoView(member)"></i> </h2>
+        <p class="energized">
+          <span ng-show="member.sir_name && show['sir_name'].value">Sir {{member.sir_name}}<br /></span>
+          <span ng-show="member.position && show['position'].value">{{member.position}}<br /></span>
+          <span ng-show="member.status && show['status'].value">{{showStatus(member.status)}}<br /></span>
+          <span ng-show="member.phone && show['phone'].value">{{member.phone}}<br /></span>
+          <a href="mailto:{{member.email}}" ng-show="member.email && show['email'].value">{{member.email}}<br /></a>
+        </p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
