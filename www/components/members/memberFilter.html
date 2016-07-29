@@ -2,17 +2,17 @@
   <ion-header-bar class="bar-dark">
     <h1 class="title energized">Choose</h1>
     <div class="buttons">
-      <button class="button button-clear energized" ng-click="closeChooseModal()">Close</button>
+      <button class="button button-clear energized" ng-click="members.closeChooseModal()">Close</button>
     </div>
   </ion-header-bar>
   <ion-content class="has-header energized-bg">
-    <ion-item class="energized-bg">Member Status:</ion-item>
-    <ion-checkbox class="checkbox-energized energized-bg" ng-repeat="item in memberTypes"
+    <ion-item class="energized-bg item-divider">Member Status:</ion-item>
+    <ion-checkbox class="checkbox-energized energized-bg" ng-repeat="item in members.memberTypes"
                        ng-model="item.show">
               {{ item.text }}
             </ion-checkbox>
-    <ion-item class="energized-bg">Member Information:</ion-item>
-    <ion-checkbox class="checkbox-energized energized-bg" ng-repeat="item in show"
+    <ion-item class="energized-bg item-divider">Member Information:</ion-item>
+    <ion-checkbox class="checkbox-energized energized-bg" ng-repeat="item in members.show"
                        ng-model="item.value"
                        ng-show="item.show">
               {{ item.text }}

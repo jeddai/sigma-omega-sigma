@@ -1,8 +1,18 @@
 <ion-view class="energized-bg" view-title="About">
   <ion-content>
-    <h1 class="energized">Welcome</h1>
-    <p>
-      To the official Sigma Omega Sigma app! Here you can learn more about the club, get into contact with the club if you have questions, or if you are a member you can see event info and other member only things!
+    <p style="padding-top: 20px;">
+      {{about.welcome}}
+    </p>
+    <h1 class="energized" style="padding-bottom:0px;">Quick Links</h1>
+    <div class="row" style="flex-wrap: wrap;">
+      <div class="col col-40 card card-energized" ng-repeat="link in about.links" style="text-align:center;" ng-click="about.goTo(link.link)">
+        <i ng-class="link.icon"></i>
+        <h4 class="energized">{{link.name}}</h4>
+      </div>
+    </div>
+    <button ng-show="!loggedIn" class="button button-full button-energized" ng-click="login()">Login</button>
+    <p style="text-align: center">
+      <small>App by Charles Humphreys | Icon by Thomas Matheny</small>
     </p>
   </ion-content>
 </ion-view>

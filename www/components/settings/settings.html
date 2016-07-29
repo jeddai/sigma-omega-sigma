@@ -1,15 +1,24 @@
 <ion-view class="energized-bg" title="Settings">
   <ion-content>
     <ion-list>
-      <ion-item class="energized item-border-bg" ng-click="sendPassResetEmail()" ng-disabled="passwordResetSent">
+      <ion-item class="energized-bg item-divider" ng-show="showMemberItems">Members</ion-item>
+      <ion-item class="energized item-border-bg" ng-click="settings.sendPassResetEmail()" ng-disabled="settings.passwordResetSent" ng-show="settings.showMemberItems">
         <i class="icon ion-paper-airplane energized"></i>
-        <span ng-show="!passwordResetSent">Send Password Reset Email</span>
-        <b ng-show="passwordResetSent">Sent!</b>
+        <span ng-show="!settings.passwordResetSent">Send Password Reset Email</span>
+        <b ng-show="settings.passwordResetSent">Sent!</b>
       </ion-item>
-      <ion-item class="energized item-border-bg" ng-click="subscribeToMemberNotifications()">
+      <ion-item class="energized-bg item-divider">Notifications</ion-item>
+      <ion-item class="energized item-border-bg" ng-click="settings.requestNotifications()">
         <i class="icon ion-email-unread energized"></i>
-        <span ng-show="!subscribedToMemberNotifications">Subscribe to member notifications</span>
-        <span ng-show="subscribedToMemberNotifications" class="wrap">You are subscribed to member notifications</span>
+        <span>Allow Notifications</span>
+      </ion-item>
+      <ion-item class="energized item-border-bg"
+                ng-click="settings.subscribeToNotifications('{{item.name}}')"
+                ng-repeat="item in settings.notifications"
+                ng-show="item.show">
+        <i ng-class="item.class"></i>
+        <span ng-show="!item.value">Subscribe to {{item.name}} notifications</span>
+        <span ng-show="item.value" class="wrap">You are subscribed to {{item.name}} notifications</span>
       </ion-item>
     </ion-list>
   </ion-content>

@@ -10,18 +10,13 @@ angular.module('sigmaomegasigma', ['ionic', 'ngCordova'])
       storageBucket: "sigma-omega-sigma.appspot.com",
     };
 
-    window.FirebasePlugin.getInstanceId(function(token) {
-        window.FirebasePlugin.grantPermission();
-    }, function(error) {
-        console.error(error);
-    });
-
-    window.FirebasePlugin.getInstanceId(function(token) {
-        window.FirebasePlugin.setBadgeNumber(0);
-        window.FirebasePlugin.subscribe("all-users");
-    }, function(error) {
-        console.error(error);
-    });
+    if(window.FirebasePlugin) {
+      window.FirebasePlugin.getInstanceId(function(token) {
+          window.FirebasePlugin.grantPermission();
+      }, function(error) {
+          console.error(error);
+      });
+    }
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -35,15 +30,6 @@ angular.module('sigmaomegasigma', ['ionic', 'ngCordova'])
       StatusBar.styleDefault();
     }
   });
-
-  /*$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-      if (notLoggedIn) {
-          event.preventDefault();
-          return $state.go('login');
-      }
-
-      return;
-  });*/
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -53,14 +39,16 @@ angular.module('sigmaomegasigma', ['ionic', 'ngCordova'])
     url: '/app',
     abstract: true,
     templateUrl: 'components/menu/menu.html',
-    controller: 'AppCtrl'
+    controller: 'AppCtrl',
+    controllerAs: 'app'
   })
   .state('app.about', {
     url: '/about',
     views: {
       'menuContent': {
         templateUrl: 'components/about/about.html',
-        controller: 'AboutCtrl'
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
       }
     }
   })
@@ -77,7 +65,8 @@ angular.module('sigmaomegasigma', ['ionic', 'ngCordova'])
     views: {
       'menuContent': {
         templateUrl: 'components/members/members.html',
-        controller: 'MembersCtrl'
+        controller: 'MembersCtrl',
+        controllerAs: 'members'
       }
     }
   })
@@ -97,11 +86,11 @@ angular.module('sigmaomegasigma', ['ionic', 'ngCordova'])
       }
     }
   })
-  .state('app.calendar', {
-    url: '/calendar',
+  .state('app.events', {
+    url: '/events',
     views: {
       'menuContent': {
-        templateUrl: 'templates/calendar.html'
+        templateUrl: 'templates/events.html'
       }
     }
   })
@@ -110,10 +99,10 @@ angular.module('sigmaomegasigma', ['ionic', 'ngCordova'])
     views: {
       'menuContent': {
         templateUrl: 'components/settings/settings.html',
-        controller: 'SettingsCtrl'
+        controller: 'SettingsCtrl',
+        controllerAs: 'settings'
       }
     }
   });
-  // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/about');
 });

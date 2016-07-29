@@ -6,6 +6,10 @@ ion-content p {
   padding: 0px 5px 5px 5px;
 }
 
+h1 {
+  text-align: center;
+}
+
 i {
   font-size: 1.2em;
 }
@@ -71,4 +75,40 @@ ion-radio {
 .bar .bar-dark .title {
   color: #e6b500;
   background-color: #444;
+}
+
+ion-spinner {
+  margin: auto;
+  position: absolute;
+  top: 200px; left: 0; bottom: 0; right: 0;
+  /*height: 85px;*/
+  text-align: center;
+  z-index: 500;
+}
+
+.spinner svg {
+  width: 50px;
+  height: 50px;
+  stroke: #e6b500;
+  fill: #e6b500;
+}
+
+.about {
+  width: 50%;
+}
+
+.about-icon {
+  font-size:100px;
+  text-align: center;
+}
+
+.card-energized {
+  margin-left: auto;
+  margin-right: auto;
+  color: #e6b500;
+  background-color: #555;
+}
+
+.button-energized {
+  color: #444 !important;
 }

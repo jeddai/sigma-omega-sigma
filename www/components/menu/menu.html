@@ -19,11 +19,11 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item class="energized item-border-bg" ng-click="login()" ng-show="!loggedIn">
+        <ion-item class="energized item-border-bg" ng-click="app.login()" ng-show="!app.loggedIn">
           <i class="icon ion-log-in energized"></i>
           Login
         </ion-item>
-        <ion-item class="energized item-border-bg" ng-click="logout()" ng-show="loggedIn">
+        <ion-item class="energized item-border-bg" ng-click="app.logout()" ng-show="app.loggedIn">
           <i class="icon ion-log-out energized"></i>
           Logout
         </ion-item>
@@ -47,11 +47,11 @@
           <i class="icon ion-email energized"></i>
           Contact
         </ion-item>
-        <ion-item class="energized item-border-bg" menu-close href="#/app/calendar" ng-show="loggedIn">
+        <ion-item class="energized item-border-bg" menu-close href="#/app/events" ng-show="app.loggedIn">
           <i class="icon ion-calendar energized"></i>
-          Calendar
+          Events
         </ion-item>
-        <ion-item class="energized item-border-bg" menu-close href="#/app/settings" ng-show="loggedIn">
+        <ion-item class="energized item-border-bg" menu-close href="#/app/settings">
           <i class="icon ion-ios-gear energized"></i>
           Settings
         </ion-item>

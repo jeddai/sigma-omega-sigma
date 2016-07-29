@@ -1,120 +1,128 @@
-angular.module('sigmaomegasigma')
+(function() {
 
-.controller('MembersCtrl', function($scope, $ionicModal) {
+  'use strict';
 
-  $scope.members = [];
+  angular.module('sigmaomegasigma')
+  .controller('MembersCtrl', MembersController);
 
-  $scope.getMembers = function() {
-    firebase.database().ref('members/').on('value', function(snapshot) {
-      $scope.members = snapshot.val();
+  function MembersController($scope, $ionicModal, UserService) {
+    var self = this;
+
+    self.loggedIn = UserService.loggedIn;
+    self.members = [];
+    self.loaded = false;
+
+    self.getMembers = function() {
+      if(self.loaded === false) {
+        firebase.database().ref('members/').on('value', function(snapshot) {
+          self.members = snapshot.val();
+          self.loaded = true;
+        });
+      }
+    };
+
+    self.getMembers();
+
+    self.activeMember = {};
+
+    self.show = {
+      'sir_name' : {
+        'text' : 'Sir Name',
+        'value' : true,
+        'show' : true
+      },
+      'position' : {
+        'text' : 'Position',
+        'value' : true,
+        'show' : true
+      },
+      'email' : {
+        'text' : 'Email Address',
+        'value' : false,
+        'show' : true
+      },
+      'phone' : {
+        'text' : 'Phone Number',
+        'value' : false,
+        'show' : false
+      },
+      'status' : {
+        'text' : 'Status',
+        'value' : false,
+        'show' : true
+      }
+    };
+
+    $scope.$watch(function() {
+      return UserService.loggedIn;
+    }, function(value) {
+      self.loggedIn = value;
+      self.show.phone.show = value;
     });
-  };
 
-  $scope.getMembers();
+    self.memberTypes = {
+      'active' : {
+        'text': 'Active',
+        'value': 'active',
+        'show': true
+      },
+      'inactive' : {
+        'text': 'Inactive',
+        'value': 'inactive',
+        'show': false
+      },
+      'alumni' : {
+        'text': 'Alumni',
+        'value': 'alumni',
+        'show': false
+      },
+      'sponsor' : {
+        'text': 'Sponsor',
+        'value': 'sponsor',
+        'show': false
+      }
+    };
 
-  $scope.activeMember = {};
+    self.showStatus = function(status) {
+      return self.memberTypes[status].text;
+    };
 
-  $scope.show = {
-    'sir_name' : {
-      'text' : 'Sir Name',
-      'value' : true,
-      'show' : true
-    },
-    'position' : {
-      'text' : 'Position',
-      'value' : true,
-      'show' : true
-    },
-    'email' : {
-      'text' : 'Email Address',
-      'value' : false,
-      'show' : true
-    },
-    'phone' : {
-      'text' : 'Phone Number',
-      'value' : false,
-      'show' : false
-    },
-    'status' : {
-      'text' : 'Status',
-      'value' : false,
-      'show' : true
-    }
-  };
+    self.active = function(member) {
+      if(self.data.value == member.status) {
+        return true;
+      }else {
+        return false;
+      }
+    };
 
-  $scope.$watch(function($scope) {
-    return $scope.loggedIn;
-  }, function() {
-    if($scope.loggedIn) {
-      $scope.show.phone.show = true;
-    }else {
-      $scope.show.phone.show = false;
-      $scope.show.phone.value = false;
-    }
-  }, true);
+    $ionicModal.fromTemplateUrl('components/members/member-info-view.html', {
+      scope: $scope
+    }).then(function(modal) {
+      self.memberInfoModal = modal;
+    });
 
-  $scope.memberTypes = {
-    'active' : {
-      'text': 'Active',
-      'value': 'active',
-      'show': true
-    },
-    'inactive' : {
-      'text': 'Inactive',
-      'value': 'inactive',
-      'show': false
-    },
-    'alumni' : {
-      'text': 'Alumni',
-      'value': 'alumni',
-      'show': false
-    },
-    'sponsor' : {
-      'text': 'Sponsor',
-      'value': 'sponsor',
-      'show': false
-    }
-  };
+    self.openInfoView = function(member) {
+      self.activeMember = member;
+      self.memberInfoModal.show();
+    };
 
-  $scope.showStatus = function(status) {
-    return $scope.memberTypes[status].text;
-  };
+    self.closeInfoModal = function() {
+      self.activeMember = {};
+      self.memberInfoModal.hide();
+    };
 
-  $scope.active = function(member) {
-    if($scope.data.value == member.status) {
-      return true;
-    }else {
-      return false;
-    }
-  };
+    $ionicModal.fromTemplateUrl('components/members/memberFilter.html', {
+      scope: $scope
+    }).then(function(modal) {
+      self.chooseModal = modal;
+    });
 
-  $ionicModal.fromTemplateUrl('components/members/member-info-view.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.memberInfoModal = modal;
-  });
+    self.openChooseView = function() {
+      self.chooseModal.show();
+    };
 
-  $scope.openInfoView = function(member) {
-    $scope.activeMember = member;
-    $scope.memberInfoModal.show();
-  };
-
-  $scope.closeInfoModal = function() {
-    $scope.activeMember = {};
-    $scope.memberInfoModal.hide();
-  };
-
-  $ionicModal.fromTemplateUrl('components/members/memberFilter.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.chooseModal = modal;
-  });
-
-  $scope.openChooseView = function() {
-    $scope.chooseModal.show();
-  };
-
-  $scope.closeChooseModal = function() {
-    $scope.chooseModal.hide();
-  };
-});
+    self.closeChooseModal = function() {
+      self.chooseModal.hide();
+    };
+  }
+})();
