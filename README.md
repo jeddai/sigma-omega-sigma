@@ -10,3 +10,5 @@ The iOS/Android app for the Lipscomb social club Sigma Omega Sigma
   - Ionic's core and plugins FTW
 - [ngCordova](http://ngcordova.com/docs/)
   - Cordova's Angular based plugin/beast
+- [Angular StyleGuide](https://github.com/johnpapa/angular-styleguide/tree/master/a1#services)
+  - A styleguide written for Angular to make it transition better when Angular 2 comes out.
