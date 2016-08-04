@@ -9,7 +9,7 @@
     var self = this;
 
     $ionicPlatform.ready(function() {
-      if(window.sqlitePlugin) {
+      /*if(window.sqlitePlugin) {
         $cordovaSQLite.openDB({ name: 'hello-world.db', location: 'default' }, function (db) {
           db.executeSql("select length('tenletters') as stringlength", [], function (res) {
             var stringlength = res.rows.item(0).stringlength;
@@ -17,7 +17,7 @@
             document.getElementById('deviceready').querySelector('.received').innerHTML = 'stringlength: ' + stringlength;
          });
         });
-      }
+      }*/
     });
 
     self.loggedIn = UserService.loggedIn;

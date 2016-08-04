@@ -5,7 +5,7 @@
   angular.module('sigmaomegasigma')
   .controller('MembersCtrl', MembersController);
 
-  function MembersController($scope, $ionicModal, UserService) {
+  function MembersController($scope, $ionicPlatform, $ionicModal, UserService, FirebaseFactory, $cordovaFile, $cordovaFileTransfer, $timeout, $ionicLoading) {
     var self = this;
 
     self.getMembers = getMembers;
@@ -16,6 +16,7 @@
     self.openChooseModal = openChooseModal;
     self.closeChooseModal = closeChooseModal;
 
+    self.percentage = 0;
     self.loggedIn = UserService.loggedIn;
     self.members = [];
     self.loaded = false;
@@ -70,19 +71,31 @@
       }
     };
 
+    function loading(val) {
+      if(val) {
+        $ionicLoading.show({template: 'Loading...'});
+      } else {
+        $ionicLoading.hide();
+      }
+    }
+
+    loading(true);
+
     function getMembers() {
       if(self.loaded === false) {
-        firebase.database().ref('members/').on('value', function(snapshot) {
+        FirebaseFactory.getItems('/members').on('value', function(snapshot) {
           self.members = snapshot.val();
           self.loaded = true;
+          getImages(0);
         });
+      } else {
+        getImages(0);
       }
     }
 
     function showStatus(status) {
       return self.memberTypes[status].text;
     }
-    
     function active(member) {
       if(self.data.value == member.status) {
         return true;
@@ -109,7 +122,53 @@
       self.chooseModal.hide();
     }
 
-    getMembers();
+    function getImage(member, url, fileString, targetPath, trustHosts, options, num) {
+      $cordovaFile.checkFile(cordova.file.dataDirectory, fileString)
+      .then(function (success) {
+        member.dlimage = targetPath;
+        getImages(num+1);
+      }, function (error) {
+        $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
+        .then(function(result) {
+          member.dlimage = targetPath;
+          getImages(num+1);
+        }, function(err) {
+          console.log(err);
+          member.dlimage = 'http://placehold.it/100x100?text=None';
+          getImages(num+1);
+        }, function (progress) {
+          $timeout(function () {
+            self.downloadProgress = (progress.loaded / progress.total) * 100;
+          });
+        });
+      });
+    }
+
+    function getImages(num) {
+      if(num < self.members.length) {
+        var member = self.members[num];
+        var url,
+            fileString,
+            targetPath,
+            trustHosts = true,
+            options = {};
+
+        if(!!member.image && member.image.length > 0) {
+          url = member.image;
+          fileString = member.first_name.toLowerCase() + '-' + member.last_name.toLowerCase() + '.jpg';
+          targetPath = cordova.file.dataDirectory + fileString;
+        } else {
+          url = 'http://placehold.it/150x150?text=None';
+          fileString = 'placeholder.png';
+          targetPath = cordova.file.dataDirectory + fileString;
+        }
+        getImage(member, url, fileString, targetPath, trustHosts, options, num);
+      } else {
+        loading(false);
+      }
+    }
+
+    self.getMembers();
 
     $scope.$watch(function() {
       return UserService.loggedIn;

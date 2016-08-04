@@ -6,7 +6,7 @@
     <!--<h1 class="energized">Members</h1>-->
     <ion-list class="energized" can-swipe="listCanSwipe">
       <ion-item ng-show="members.memberTypes[member.status].show" ng-repeat="member in members.members | orderBy:'first_name'" class="item-thumbnail-left item-avatar energized item-border-bg">
-        <img ng-show="member.image" ng-src="{{member.image}}">
+        <img ng-src="{{member.dlimage}}">
         <h2 class="energized">{{member.first_name}} {{member.last_name}} <i class="icon ion-information-circled energized" ng-show="members.loggedIn" ng-click="members.openInfoModal(member)"></i> </h2>
         <p class="energized">
           <span ng-show="member.sir_name && members.show['sir_name'].value">Sir {{member.sir_name}}<br /></span>
