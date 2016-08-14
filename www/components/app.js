@@ -1,7 +1,9 @@
 angular.module('sigmaomegasigma', ['ionic', 'ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $cordovaSQLite, UserService, FirebaseFactory) {
   $ionicPlatform.ready(function() {
+
+    UserService.retrieveLoginData();
 
     var config = {
       apiKey: "AIzaSyCoJNQeL1bNBshfKhWm44i7XvpfbUzVYmA",
@@ -85,7 +87,9 @@ angular.module('sigmaomegasigma', ['ionic', 'ngCordova'])
     url: '/contact',
     views: {
       'menuContent': {
-        templateUrl: 'templates/contact.html'
+        templateUrl: 'components/contact/contact.html',
+        controller: 'ContactCtrl',
+        controllerAs: 'contact'
       }
     }
   })
@@ -106,6 +110,30 @@ angular.module('sigmaomegasigma', ['ionic', 'ngCordova'])
         controllerAs: 'settings'
       }
     }
+  })
+  .state('app.faith', {
+    url:'/faith',
+    views: {
+      'menuContent' : {
+        templateUrl: 'components/faith/faith.html',
+        controller: 'FaithCtrl',
+        controllerAs: 'faith'
+      }
+    }
   });
   $urlRouterProvider.otherwise('/app/about');
+})
+.config(function($cordovaInAppBrowserProvider) {
+
+  var options = {
+    location: 'yes',
+    clearcache: 'no',
+    toolbarposition: 'top'
+  };
+
+  document.addEventListener("deviceready", function () {
+
+    $cordovaInAppBrowserProvider.setDefaultOptions(options)
+
+  }, false);
 });

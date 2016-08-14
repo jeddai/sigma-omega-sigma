@@ -1,0 +1,18 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-dark">
+    <h1 class="title energized">Administration</h1>
+    <div class="buttons">
+      <button class="button button-clear energized" ng-click="app.closeAdmin()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="energized-bg" ng-controller="FaithCtrl as faith">
+    <ion-list>
+      <ion-item class="energized-bg item-divider">Prayer Requests:</ion-item>
+      <ion-item class="energized item-border-bg" ng-repeat="(key,request) in faith.prayerRequests" ng-hide="request.approved">
+        <p class="energized"><span class="wrap">{{request.request}}</span></p>
+        <i class="icon ion-checkmark-circled energized col-offset-10" ng-click="faith.approveRequest(key, request)"> Approve</i>
+        <i class="icon ion-close-circled energized col-offset-25" ng-click="faith.deleteRequest(key, request)"> Delete</i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-modal-view>

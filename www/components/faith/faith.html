@@ -1,0 +1,32 @@
+<ion-view class="energized-bg" view-title="Faith">
+  <ion-content>
+    <h4 class="energized">How we feel about faith</h4>
+    <p class="energized">
+      Here in SOS we take our faith very seriously. The Chaplain is one of our most important officers in the club.
+      During the semester we have devotional meetings every other week instead of standard meetings, and we try our hardest to serve God in all the service we do and in our daily lives.
+    </p>
+    <h4 class="energized">Prayer Requests</h4>
+    <p class="energized">
+      One thing we have decided to do with this app is allow anyone to submit a prayer request. During our devotional meetings we will go through the prayer requests and pray for each one of them.
+      <br/>
+      <br/>
+      Please do not send through spam prayer requests, as that is rather disrespectful and rude.
+    </p>
+    <button class="button button-full button-energized" ng-click="faith.openPrayerRequestModal()">Submit Prayer Request</button>
+
+    <div ng-show="faith.loggedIn">
+      <h2 class="energized" style="text-align: center;">Requests:</h2>
+      <div class="list card card-list-energized" ng-repeat="(key, request) in faith.prayerRequests" ng-show="faith.showRequest(request)">
+        <div class="item card-list-energized" ng-show="request.firstName || request.lastName">
+          <h2 class="energized">{{request.firstName}} {{request.lastName}}</h2>
+        </div>
+        <div class="item item-body card-list-energized">
+          <b class="energized" ng-show="faith.newRequest(request)">New</b>
+          <p class="energized">
+            {{request.request}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

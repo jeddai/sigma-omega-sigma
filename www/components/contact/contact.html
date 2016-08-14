@@ -1,0 +1,12 @@
+<ion-view class="energized-bg" view-title="Contact Us">
+  <ion-content>
+    <p class="energized">Do you have a question regarding pledging? Are you wanting to learn more about SOS' service initiatives? Want to set up an event with us? Just use the links below to our email addresses and send us an email!</p>
+    <p class="energized">When you click on one of the links, please don't change the subject line - it helps us respond to you faster!</p>
+    <ion-list class="energized" can-swipe="listCanSwipe">
+      <ion-item ng-repeat="person in contact.contacts" class="energized item-border-bg" ng-click="contact.email(person.email)">
+        <h2 class="energized">{{person.title}}</h2>
+        <p class="energized">{{person.reason}} questions</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -10,9 +10,11 @@
         <h4 class="energized">{{link.name}}</h4>
       </div>
     </div>
-    <button ng-show="!loggedIn" class="button button-full button-energized" ng-click="login()">Login</button>
+    <button ng-hide="about.loggedIn" class="button button-full button-energized" ng-click="app.login()">Login</button>
     <p style="text-align: center">
       <small>App by Charles Humphreys | Icon by Thomas Matheny</small>
+      <br />
+      <i class="icon ion-social-github" ng-click="about.link('https://github.com/jeddai/sigma-omega-sigma', '_system')"></i>
     </p>
   </ion-content>
 </ion-view>

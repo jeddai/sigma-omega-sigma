@@ -1,0 +1,35 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-dark">
+    <h1 class="title energized">New Prayer Request</h1>
+    <div class="buttons">
+      <button class="button button-clear energized" ng-click="faith.closePrayerRequestModal()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="has-header energized-bg">
+    <form ng-submit="faith.submitRequest()">
+    <div class="list">
+      <label class="item item-input item-floating-label energized-bg">
+        <span class="input-label energized">First Name</span>
+        <input class="energized-bg" type="text" ng-model="faith.newPrayerRequest.firstName" ng-style="faith.inputStyle" placeholder="First Name" maxlength="20">
+      </label>
+      <label class="item item-input item-floating-label energized-bg">
+        <span class="input-label energized">Last Name</span>
+        <input class="energized-bg"  type="text" ng-model="faith.newPrayerRequest.lastName" ng-style="faith.inputStyle" placeholder="Last Name" maxlength="30">
+      </label>
+      <label class="item item-input item-floating-label energized-bg">
+        <span class="input-label energized">Email</span>
+        <input class="energized-bg"  type="email" ng-model="faith.newPrayerRequest.email" ng-style="faith.inputStyle" placeholder="Email" maxlength="50">
+      </label>
+      <label class="item item-input item-floating-label energized-bg">
+        <span class="input-label energized">Prayer Request*</span>
+        <textarea ng-required="true" class="energized-bg" type="text" ng-model="faith.newPrayerRequest.request" ng-style="faith.inputStyle" placeholder="Prayer Request*">
+        </textarea>
+      </label>
+      <label class="item energized-bg">
+        <button class="button button-block button-energized" type="submit">Submit</button>
+      </label>
+    </div>
+    <small class="energized" style="padding: 0px 10px 0px 10px;">Items marked with a * are required.</small>
+  </form>
+  </ion-content>
+</ion-modal-view>

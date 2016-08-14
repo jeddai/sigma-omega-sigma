@@ -2,6 +2,8 @@
 ion-content h1,
 ion-content h2,
 ion-content h3,
+ion-content h4,
+ion-content h5,
 ion-content p {
   padding: 0px 5px 5px 5px;
 }
@@ -77,16 +79,8 @@ ion-radio {
   background-color: #444;
 }
 
+.spinner svg,
 ion-spinner {
-  margin: auto;
-  position: absolute;
-  top: 200px; left: 0; bottom: 0; right: 0;
-  /*height: 85px;*/
-  text-align: center;
-  z-index: 500;
-}
-
-.spinner svg {
   width: 50px;
   height: 50px;
   stroke: #e6b500;
@@ -109,6 +103,19 @@ ion-spinner {
   background-color: #555;
 }
 
+.card-list-energized {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #e6b500;
+  background-color: #555;
+  border-color: #333 !important;
+}
+
 .button-energized {
   color: #444 !important;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #e6b500;
 }

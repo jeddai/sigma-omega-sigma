@@ -73,7 +73,9 @@
 
     function loading(val) {
       if(val) {
-        $ionicLoading.show({template: 'Loading...'});
+        $ionicLoading.show({
+          template: '<ion-spinner icon="android"></ion-spinner><p class="energized">This could take a while...</p>'
+        });
       } else {
         $ionicLoading.hide();
       }

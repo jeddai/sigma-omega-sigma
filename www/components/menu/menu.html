@@ -9,6 +9,10 @@
         </button>
       </ion-nav-buttons>
 
+      <ion-nav-buttons side="right">
+        <button class="button button-clear energized" ng-show="app.admin" ng-click="app.openAdmin()">Admin</button>
+      </ion-nav-buttons>
+
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
@@ -34,6 +38,10 @@
         <ion-item class="energized item-border-bg" menu-close href="#/app/members">
           <i class="icon ion-person-stalker energized"></i>
           Members
+        </ion-item>
+        <ion-item class="energized item-border-bg" menu-close href="#/app/faith">
+          <i class="icon ion-heart energized"></i>
+          Faith
         </ion-item>
         <ion-item class="energized item-border-bg" menu-close href="#/app/service">
           <i class="icon ion-earth energized"></i>
